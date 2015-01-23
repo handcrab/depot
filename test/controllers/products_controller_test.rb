@@ -52,4 +52,18 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+
+  test 'should list the products' do
+    get :index #/products
+
+    assert_select '.list_actions', minimum: 3
+    
+    assert_select '.list_actions' do |elements|
+      elements.each do |element|
+        assert_select element, "a", 3 # del, edit, show
+      end
+    end
+
+  end
+
 end
