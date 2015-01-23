@@ -10,6 +10,7 @@ two:
   image_url: MyString
   price: 9.99
 ruby:
+  id: 20
   title: Programming Ruby 1.9
   description:
     Ruby is the fastest growing and most exciting dynamic
@@ -17,3 +18,11 @@ ruby:
     delivered fast, you should add Ruby to your toolbox.
   price: 49.50
   image_url: ruby.png
+coffee:
+  id: 22
+  title: CoffeeScript
+  description:
+    CoffeeScript is the fastest growing and most exciting dynamic
+    language out there.
+  price: 35
+  image_url: coffee.png
