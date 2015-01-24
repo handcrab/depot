@@ -1,8 +1,8 @@
 class LineItemsController < ApplicationController
   include CurrentCart # concern
 
-  before_action :set_cart, only: [:create] # concern
-  before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:create, :decrement] # concern
+  before_action :set_line_item, only: [:show, :edit, :update, :destroy, :decrement]
 
   # GET /line_items
   # GET /line_items.json
@@ -64,7 +64,20 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       format.html { redirect_to store_url }
+      # format.js { @cart = @line_item.cart }
       format.json { head :no_content }
+    end
+  end
+
+  # PUT /line_items/1
+  def decrement
+    # @cart = current_cart
+    @line_item.decrement
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_url }
+        format.js { @current_item = @line_item } #{ @cart = @line_item.cart }
+      end
     end
   end
 

@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 
   root 'store#index', as: 'store'
 
+  resources :line_items do
+    put 'decrement', on: :member
+  end
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
