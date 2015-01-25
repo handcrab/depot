@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :orders
+
   resources :line_items
 
   resources :carts
@@ -23,6 +25,10 @@ Rails.application.routes.draw do
 
   resources :line_items do
     put 'decrement', on: :member
+  end
+
+  resources :products do
+    get :who_bought, on: :member
   end
   
   # Example of regular route:

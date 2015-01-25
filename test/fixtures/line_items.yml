@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  product_id: 
-  cart_id: 
-
+  product: ruby
+  order: one
+  price: 49.50
 two:
-  product_id: 
-  cart_id: 
+  product: coffee
+  cart: two
+  price: 10.99

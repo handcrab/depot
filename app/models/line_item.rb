@@ -1,6 +1,9 @@
 class LineItem < ActiveRecord::Base
+  belongs_to :order
   belongs_to :product
   belongs_to :cart
+
+  before_create :save_price
 
   def total_price
     price * quantity
@@ -14,4 +17,9 @@ class LineItem < ActiveRecord::Base
     end
     self
   end
+
+  private
+    def save_price
+      self.price = self.product.price
+    end
 end
