@@ -30,6 +30,15 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "should create order" do
+    item = LineItem.new
+    item.build_cart
+    item.product = products(:ruby)
+    item.save!
+    # raise StandardError, item.inspect
+    session[:cart_id] = item.cart.id
+
+
+
     assert_difference('Order.count') do
       post :create, order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type }
     end

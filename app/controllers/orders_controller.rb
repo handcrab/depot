@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
-
+  before_action :check_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -16,11 +16,11 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/new
-  def new
-    if @cart.line_items.empty?
-      redirect_to store_url, notice: "Your cart is empty"
-      return
-    end
+  def new    
+    # if @cart.line_items.empty?
+    #   redirect_to store_url, notice: "Your cart is empty"
+    #   return
+    # end
 
     @order = Order.new
   end
@@ -82,5 +82,12 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
+    end
+
+    def check_cart
+      if @cart.line_items.empty?
+        redirect_to store_url, notice: "Your cart is empty"
+        return
+      end
     end
 end
