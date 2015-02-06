@@ -4,6 +4,9 @@ one:
   order: one
   price: 49.50
 two:
+  product: ruby
+  cart: one
+three:
   product: coffee
   cart: two
   price: 10.99

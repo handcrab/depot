@@ -44,4 +44,5 @@ group :development, :test do
   gem 'spring'
 
   gem 'puma' # web server
+  gem 'pry'
 end
